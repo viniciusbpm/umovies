@@ -4,6 +4,7 @@ import br.com.ubots.umovies.controller.request.MovieRequest;
 import br.com.ubots.umovies.controller.response.MovieResponse;
 import br.com.ubots.umovies.service.AddMovieService;
 import br.com.ubots.umovies.service.ListMoviesService;
+import br.com.ubots.umovies.service.RemoveMovieService;
 import br.com.ubots.umovies.service.UpdateMovieService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class MovieController {
     private UpdateMovieService updateMovieService;
     @Autowired
     private ListMoviesService listMoviesService;
+    @Autowired
+    private RemoveMovieService removeMovieService;
 
 
     @PostMapping
@@ -35,5 +38,10 @@ public class MovieController {
     @GetMapping
     public List<MovieResponse> list() {
         return listMoviesService.list();
+    }
+
+    @DeleteMapping("{id}")
+    public void remove(@PathVariable Long id) {
+        removeMovieService.remove(id);
     }
 }
