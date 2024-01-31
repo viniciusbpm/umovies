@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class RateMovieRequest {
     @NotNull(message = "You have to add a value")
-    @Min(value = 1, message = "The value must be greater than 0")
+    @Min(value = 1, message = "The value must be greater or equal to 1")
     @Max(value = 5, message = "The value must be less or equal to 5")
-    private int value;
+    private Long value;
 }

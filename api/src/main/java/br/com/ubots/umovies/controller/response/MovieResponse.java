@@ -15,5 +15,5 @@ public class MovieResponse {
     private String title;
     private String synopsis;
     private LocalDate releaseDate;
-    private int rating;
+    private Long rating;
 }

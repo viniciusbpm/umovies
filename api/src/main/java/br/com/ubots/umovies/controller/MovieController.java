@@ -23,6 +23,8 @@ public class MovieController {
     private RemoveMovieService removeMovieService;
     @Autowired
     private RateMovieService rateMovieService;
+    @Autowired
+    private SuggestMovieService suggestMovieService;
 
 
     @PostMapping
@@ -49,4 +51,10 @@ public class MovieController {
     public MovieResponse rate(@Valid @RequestBody RateMovieRequest request, @PathVariable Long id){
         return rateMovieService.rate(request, id);
     }
+
+    @GetMapping("suggest")
+    public MovieResponse suggest(){
+        return suggestMovieService.suggest();
+    }
+
 }
