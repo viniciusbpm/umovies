@@ -28,5 +28,5 @@ public class Movie {
     @Column(nullable = false)
     private LocalDate releaseDate;
     @Column
-    private int rating;
+    private Long rating;
 }
