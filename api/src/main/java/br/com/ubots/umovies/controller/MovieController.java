@@ -1,11 +1,9 @@
 package br.com.ubots.umovies.controller;
 
 import br.com.ubots.umovies.controller.request.MovieRequest;
+import br.com.ubots.umovies.controller.request.RateMovieRequest;
 import br.com.ubots.umovies.controller.response.MovieResponse;
-import br.com.ubots.umovies.service.AddMovieService;
-import br.com.ubots.umovies.service.ListMoviesService;
-import br.com.ubots.umovies.service.RemoveMovieService;
-import br.com.ubots.umovies.service.UpdateMovieService;
+import br.com.ubots.umovies.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +21,8 @@ public class MovieController {
     private ListMoviesService listMoviesService;
     @Autowired
     private RemoveMovieService removeMovieService;
+    @Autowired
+    private RateMovieService rateMovieService;
 
 
     @PostMapping
@@ -31,7 +31,7 @@ public class MovieController {
     }
 
     @PutMapping("{id}")
-    public MovieResponse update(@RequestBody @Valid MovieRequest request, @PathVariable Long id) {
+    public MovieResponse update(@Valid @RequestBody MovieRequest request, @PathVariable Long id) {
         return updateMovieService.update(request, id);
     }
 
@@ -43,5 +43,10 @@ public class MovieController {
     @DeleteMapping("{id}")
     public void remove(@PathVariable Long id) {
         removeMovieService.remove(id);
+    }
+
+    @PutMapping("rate/{id}")
+    public MovieResponse rate(@Valid @RequestBody RateMovieRequest request, @PathVariable Long id){
+        return rateMovieService.rate(request, id);
     }
 }
