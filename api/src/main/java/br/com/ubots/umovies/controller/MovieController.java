@@ -6,12 +6,14 @@ import br.com.ubots.umovies.controller.response.MovieResponse;
 import br.com.ubots.umovies.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("movies")
+@Validated
 public class MovieController {
     @Autowired
     private AddMovieService addMovieService;
